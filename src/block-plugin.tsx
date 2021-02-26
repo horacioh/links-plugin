@@ -18,12 +18,18 @@ function Block({ children, element, attributes, htmlAttributes, ...props }) {
   const path = ReactEditor.findPath(editor, element)
   const parent: any = getParent(editor, path)
   const Component = styleMap[parent[0].listStyle as any] || 'div'
+  const [show, setShow] = React.useState(false)
   return (
     <Component
-      style={{ position: 'relative' }}
+      style={{
+        position: 'relative',
+        backgroundColor: show ? '#f2f2f2' : 'transparent',
+      }}
       {...attributes}
       {...props}
       data-block-id={element.id}
+      onMouseEnter={() => setShow(true)}
+      onMouseLeave={() => setShow(false)}
     >
       {children}
       <div contentEditable={false}>

@@ -13,10 +13,17 @@ export function Paragraph({
   const editor = useEditor()
   const path = ReactEditor.findPath(editor, element)
   const parent: any = getParent(editor, path)
-  let style = {}
+  let style: any = {
+    position: 'relative',
+    width: '100%',
+    maxWidth: 640,
+  }
   if (parent[0].style === 'heading') {
     console.log('ES HEADING!', path)
-    style = { fontWeight: 800, fontSize: '1.5em' }
+    style = {
+      fontWeight: '800',
+      fontSize: '1.5em',
+    }
   }
   return (
     <Component {...attributes} style={style} {...htmlAttributes} {...props}>

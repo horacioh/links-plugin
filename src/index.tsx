@@ -30,6 +30,7 @@ import { LinkMenu } from './link-menu'
 import { useMenuState } from 'reakit/Menu'
 import { ToolbarMark } from './toolbar-mark'
 import { TransclusionPlugin, withTransclusions } from './transclusion-plugin'
+import { allTypes } from './initial-values'
 
 const options = {
   p: {
@@ -82,37 +83,7 @@ const plugins = [
   TransclusionPlugin(options),
 ]
 
-const initialValue = [
-  {
-    type: 'block_list',
-    listStyle: 'none',
-    children: [
-      {
-        type: 'block',
-        style: 'default',
-        id: 'a',
-        children: [
-          {
-            type: 'p',
-            children: [
-              {
-                text: 'normal text ',
-              },
-              {
-                type: 'transclusion',
-                id: 'doc1/a2',
-                text: 'content of a transclusion. is not editable!',
-              },
-              {
-                text: ' and more normal text.',
-              },
-            ],
-          },
-        ],
-      },
-    ],
-  },
-]
+const initialValue = allTypes()
 
 function useEditor(plugins, options) {
   const withPlugins = [
@@ -144,16 +115,6 @@ const App = () => {
     <>
       <div className="px-8">
         <h1 className="text-3xl font-bold">Link editor example</h1>
-        <p className="font-bold">things you can try:</p>
-        <p> - select any part of the content and add a link</p>
-        <p> - paste a URL and press enter to create a link</p>
-        <button
-          onClick={() => {
-            linkMenu.toggle()
-          }}
-        >
-          toggle link menu
-        </button>
       </div>
       <div className="mt-20">
         <Slate
@@ -201,22 +162,9 @@ const App = () => {
               }}
             />
             <ToolbarLink {...options} />
-            {/* <div
-              style={{
-                width: 1,
-                height: 24,
-                backgroundColor: 'white',
-                opacity: '0.5',
-                margin: '0 4px',
-              }}
-            /> */}
-            {/* separator */}
           </BalloonToolbar>
           <LinkMenu menu={linkMenu} />
         </Slate>
-        <code>
-          <pre>{JSON.stringify(value, null, 2)}</pre>
-        </code>
       </div>
     </>
   )
