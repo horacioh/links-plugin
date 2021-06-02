@@ -19,7 +19,5 @@ export const blockWithInlineTransclusion = () =>
   })
 
 export const allTypes = () => [
-  buildBlock(),
-  blockWithOneTransclusion(),
-  blockWithInlineTransclusion(),
+  buildBlock({children: [buildParagraph({children: [{text: 'paste the link here'}]})]})
 ]

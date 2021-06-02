@@ -53,7 +53,7 @@ const options = {
     type: 'a',
     rootProps: {
       as: 'a',
-      className: 'mintter-link underline font-light',
+      className: 'mintter-link',
     },
   },
   img: {
@@ -114,7 +114,11 @@ const App = () => {
   return (
     <>
       <div className="px-8">
-        <h1 className="text-3xl font-bold">Link editor example</h1>
+        <h1 className="text-3xl font-bold mb-5">Link editor example</h1>
+        <p>
+          focus the editor and paste this link:
+        </p>
+        <p><code>mintter://helloworld</code></p>
       </div>
       <div className="mt-20">
         <Slate

@@ -63,21 +63,22 @@ export function LinkMenu({ menu }: { menu: MenuProps }) {
       >
         <MenuItem
           {...menu}
+          ref={initialFocus}
+          onClick={() => {
+            console.log('create transclusion')
+            menu.hide?.()
+          }}
+        >
+          Create a transclusion
+        </MenuItem>
+        <MenuItem
+          {...menu}
           onClick={() => {
             console.log('dismiss menu')
             menu.hide?.()
           }}
         >
           Dismiss
-        </MenuItem>
-        <MenuItem
-          {...menu}
-          ref={initialFocus}
-          onClick={() => {
-            console.log('create transclusion')
-          }}
-        >
-          Create a transclusion
         </MenuItem>
       </Menu>
     </Portal>
